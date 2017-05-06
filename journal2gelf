@@ -118,7 +118,7 @@ class JournalToGelf:
             self.buf.clear()
 
     def run(self):
-        for line in self.fp:
+        for line in iter(self.fp.readline, ''):
             line = line.strip()
 
             # systemd > 190 switched to a single-line JSON format for each
